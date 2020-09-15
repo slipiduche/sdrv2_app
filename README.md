@@ -1,6 +1,6 @@
 # flutter_SDRV2_APP
 
-A new Flutter application implementing location sharing with MQTT as a communication protocol.
+A new Flutter application for remote control implementing MQTT as a communication protocol.
 
 ## Getting Started
 
