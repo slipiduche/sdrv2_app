@@ -1,0 +1,44 @@
+name: SDRV2_APP
+description: User App  for SDRV2.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  mqtt_client: ^5.6.2
+  
+  # A mixture between dependency injection (DI) and state management,
+  # built with widgets for widgets.
+  provider: ^3.1.0
+  shared_preferences: ^0.5.10
+  sqflite: ^1.1.5
+  path_provider: ^1.6.7
+  http:
+
+  
+
+  cupertino_icons: ^0.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: ^0.7.3
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/ORBITTAScompletoicono.png"
+  adaptive_icon_background: "assets/ORBITTAScompletoicono.png"
+
+dependency_overrides:
+  meta: ^1.1.8
+
+
+flutter:
+
+  uses-material-design: true
+  assets:
+   - assets/
