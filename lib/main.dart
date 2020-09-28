@@ -6,6 +6,7 @@ import 'package:SDRV2_APP/src/share_prefs/preferencias_usuario.dart';
 import 'package:SDRV2_APP/src/routes/routes.dart';
 
 
+
 void main() async{
    WidgetsFlutterBinding.ensureInitialized();
   final prefs = new PreferenciasUsuario();

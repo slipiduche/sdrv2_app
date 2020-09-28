@@ -45,6 +45,33 @@ class UsuarioProvider {
     }
 
   }
+  Future<Map<String, dynamic>> resetPaswword( String email) async {
+
+    final authData = {
+      "email"    : email
+      
+      
+    };
+    print(json.encode( authData ));
+    final resp = await http.post(
+      'http://orbittas.ddns.net:8081/api/device/password/reset/email',
+      body: authData 
+    );
+
+    Map<String, dynamic> decodedResp = json.decode( resp.body );
+
+    print(decodedResp);
+
+    if ( decodedResp['Error'] ==false) {
+      
+      _errorBloc.errorStreamSink(decodedResp);
+      return { 'ok': true, 'mensaje': decodedResp['message'] };
+    } else {
+      _errorBloc.errorStreamSink(decodedResp);
+      return { 'ok': false, 'mensaje': decodedResp['message'] };
+    }
+
+  }
 
 
   Future<Map<String, dynamic>> nuevoUsuario( String email, String password ,String nombre, String apellido) async {

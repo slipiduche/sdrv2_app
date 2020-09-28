@@ -5,12 +5,12 @@ import 'package:SDRV2_APP/src/share_prefs/preferencias_usuario.dart';
 import 'package:flutter/material.dart';
 import 'package:SDRV2_APP/constants.dart';
 
-class LoginPage extends StatefulWidget {
+class ResetPasswordPage extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _ResetPasswordPageState createState() => _ResetPasswordPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _ResetPasswordPageState extends State<ResetPasswordPage> {
   final prefs = new PreferenciasUsuario();
   final usuarioProvider = new UsuarioProvider();
   String _email = '', _password = '';
@@ -25,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
             //margin: EdgeInsets.symmetric(vertical: 40.0),
             color: Color.fromRGBO(255, 255, 255, 1.0),
             child: Column(
-              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(height: 40.0,),
                 
@@ -43,18 +43,20 @@ class _LoginPageState extends State<LoginPage> {
                 //Expanded(child: Container()),
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 30.0),
+                  
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(context, 'createUser');
-                        },
-                        child: _botonSuperior(
-                            'Crear Cuenta', colorResaltadoBoton, Colors.black),
-                      ),
-                      Expanded(child: Container()),
-                      _botonSuperior('Acceder', colorOrbittas, Colors.white),
-
+                      
+                        GestureDetector(
+                          onTap: () {
+                           // Navigator.pushNamed(context, 'createUser');
+                          },
+                          child: _botonSuperior(
+                              '¿Olvidó su contraseña?', colorOrbittas, Colors.white),
+                        ),
+                      
+                     
                       //_bontonLogin()
                     ],
                   ),
@@ -140,22 +142,6 @@ class _LoginPageState extends State<LoginPage> {
           SizedBox(
             height: 30.0,
           ),
-          _crearPassword(),
-          SizedBox(
-            height: 10.0,
-          ),
-          GestureDetector(
-            onTap: (){
-              Navigator.pushNamed(context, 'resetPasswordPage');
-
-            },
-                      child: Text('¿No recuerdas la contraseña?',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20.0,
-                ),
-                textAlign: TextAlign.center),
-          ),
           GestureDetector(
               onTap: () async {
                 showDialog(
@@ -174,16 +160,33 @@ class _LoginPageState extends State<LoginPage> {
                               color: Colors.white,
                               child: CircularProgressIndicator())),
                     ));
-                final login = await usuarioProvider.login(_email, _password);
+                final login = await usuarioProvider.resetPaswword(_email);
                 if (login['ok']) {
+                  // print(login);
+                  // if (prefs.dispositivoSeleccionado != null) {
+                  //   Navigator.pop(context);
+                  //   Navigator.pushReplacementNamed(context, 'homePage');
+                  // } else {
+                  //   Navigator.pop(context);
+                  //   Navigator.pushReplacementNamed(context, 'perfilPage');
+                  // }
+                  Navigator.pop(context);
+                  showDialog(
+                      context: context,
+                      child: AlertDialog(
+                        elevation: 5.0,
+                        title: Center(child: Text('Exito')),
+                        content: Container(
+                          child: Text(
+                            login["mensaje"],
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        actions: [
+
+                        ],
+                      ));
                   print(login);
-                  if (prefs.dispositivoSeleccionado != null) {
-                    Navigator.pop(context);
-                    Navigator.pushReplacementNamed(context, 'homePage');
-                  } else {
-                    Navigator.pop(context);
-                    Navigator.pushReplacementNamed(context, 'perfilPage');
-                  }
                 } else {
                   Navigator.pop(context);
                   showDialog(
@@ -201,7 +204,7 @@ class _LoginPageState extends State<LoginPage> {
                   print(login);
                 }
               },
-              child: _botonPlano('Entrar', colorOrbittas, Colors.white)),
+              child: Center(child: _botonPlano('Resetear contraseña', colorOrbittas, Colors.white))),
         ],
       ),
     );
