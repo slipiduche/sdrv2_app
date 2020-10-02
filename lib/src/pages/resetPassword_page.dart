@@ -53,7 +53,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                            // Navigator.pushNamed(context, 'createUser');
                           },
                           child: _botonSuperior(
-                              '¿Olvidó su contraseña?', colorOrbittas, Colors.white),
+                              '¿No recuerdas la contraseña?', colorOrbittas, Colors.white),
                         ),
                       
                      
@@ -75,7 +75,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
     return Container(
       //color: colorResaltadoBoton,
       //height: 50.0,
-      width: 134.0,
+      width: 200.0,
       //margin: EdgeInsets.symmetric(horizontal: 31.0),
       padding: EdgeInsets.symmetric(horizontal: 7.0, vertical: 10.0),
       decoration: BoxDecoration(
@@ -204,7 +204,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                   print(login);
                 }
               },
-              child: Center(child: _botonPlano('Resetear contraseña', colorOrbittas, Colors.white))),
+              child: Center(child: _botonPlano('Restablecer contraseña', colorOrbittas, Colors.white))),
         ],
       ),
     );

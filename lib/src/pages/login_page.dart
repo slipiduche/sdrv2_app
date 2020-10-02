@@ -142,7 +142,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
           _crearPassword(),
           SizedBox(
-            height: 10.0,
+            height: 20.0,
           ),
           GestureDetector(
             onTap: (){
@@ -151,8 +151,9 @@ class _LoginPageState extends State<LoginPage> {
             },
                       child: Text('¿No recuerdas la contraseña?',
                 style: TextStyle(
-                  color: Colors.black,
+                  color: colorOrbittas,
                   fontSize: 20.0,
+                  fontWeight: FontWeight.bold
                 ),
                 textAlign: TextAlign.center),
           ),

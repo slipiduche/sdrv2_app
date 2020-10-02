@@ -246,8 +246,9 @@ class _CreateAcountPageState extends State<CreateAcountPage> {
               },
               child: Text('Ya tengo una cuenta',
                   style: TextStyle(
-                    color: Colors.black,
+                    color: colorOrbittas,
                     fontSize: 20.0,
+                    fontWeight: FontWeight.bold
                   )),
             ),
           ),
